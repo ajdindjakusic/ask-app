@@ -3,11 +3,9 @@ package Controllers
 import (
 	dto "go/first-api/Dto"
 	"go/first-api/Service"
-
 	"github.com/gin-gonic/gin"
 )
 
-//login contorller interface
 type LoginController interface {
 	Login(ctx *gin.Context) string
 }

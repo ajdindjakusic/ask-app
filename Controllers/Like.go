@@ -8,16 +8,16 @@ import (
 )
 
 func HotQuestions(c *gin.Context) {
-	var like []Models.Like
-	err := Models.HotQuestions(&like)
+	var question []Models.Question
+	err := Models.HotQuestions(&question)
 	if err != nil {
 	 c.AbortWithStatus(http.StatusNotFound)
 	} else {
-	 c.JSON(http.StatusOK, like)
+	 c.JSON(http.StatusOK, question)
 	}
-   }
+}
 
-   func GetQuestionLikes(c *gin.Context) {
+func GetQuestionLikes(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var like Models.Like
 	err := Models.GetQuestionLikes(&like, id)
@@ -26,9 +26,9 @@ func HotQuestions(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, like)
 	}
-   }
+}
 
-   func GetAnswerLikes(c *gin.Context) {
+func GetAnswerLikes(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var like Models.Like
 	err := Models.GetAnswerLikes(&like, id)
@@ -37,9 +37,8 @@ func HotQuestions(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, like)
 	}
-   }
+}
 
-//PostQuestionLike ...
 func PostQuestionLike(c *gin.Context) {
 	var like Models.Like
 	c.BindJSON(&like)
@@ -50,9 +49,8 @@ func PostQuestionLike(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, like)
 	}
-   }
+}
 
-//PostAnswerLike ...
 func PostAnswerLike(c *gin.Context) {
 	var like Models.Like
 	c.BindJSON(&like)
@@ -63,4 +61,4 @@ func PostAnswerLike(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, like)
 	}
-   }
+}

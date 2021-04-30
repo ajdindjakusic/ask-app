@@ -5,7 +5,6 @@ type Answer struct {
 	Text 		 	string `json:"text"`
 	Question_id     uint   `json:"question_id"`
 	User_id      	uint   `json:"user_id"`
-	Username        string `json:"username"`
 }
 
 func (b *Answer) TableName() string {

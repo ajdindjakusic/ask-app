@@ -8,7 +8,6 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-//jwt service
 type JWTService interface {
 	GenerateToken(email string, isUser bool) string
 	ValidateToken(token string) (*jwt.Token, error)
@@ -24,7 +23,6 @@ type jwtServices struct {
 	issure    string
 }
 
-//auth-jwt
 func JWTAuthService() JWTService {
 	return &jwtServices{
 		secretKey: getSecretKey(),
@@ -52,7 +50,6 @@ func (service *jwtServices) GenerateToken(email string, isUser bool) string {
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	//encoded string
 	t, err := token.SignedString([]byte(service.secretKey))
 	if err != nil {
 		panic(err)

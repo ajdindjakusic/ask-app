@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-   func GetQuestionDislikes(c *gin.Context) {
+func GetQuestionDislikes(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var dislike Models.Dislike
 	err := Models.GetQuestionDislikes(&dislike, id)
@@ -16,9 +16,9 @@ import (
 	} else {
 	 c.JSON(http.StatusOK, dislike)
 	}
-   }
+}
 
-   func GetAnswerDislikes(c *gin.Context) {
+func GetAnswerDislikes(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var dislike Models.Dislike
 	err := Models.GetAnswerDislikes(&dislike, id)
@@ -27,7 +27,7 @@ import (
 	} else {
 	 c.JSON(http.StatusOK, dislike)
 	}
-   }
+}
 
 func PostQuestionDislike(c *gin.Context) {
 	var dislike Models.Dislike
@@ -39,7 +39,7 @@ func PostQuestionDislike(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, dislike)
 	}
-   }
+}
 
 func PostAnswerDislike(c *gin.Context) {
 	var dislike Models.Dislike
@@ -51,4 +51,4 @@ func PostAnswerDislike(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, dislike)
 	}
-   }
+}

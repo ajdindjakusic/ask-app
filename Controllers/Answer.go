@@ -7,7 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//GetAnswerByID ... Used to get answer for editing
 func GetAnswerByID(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var answer Models.Answer
@@ -17,34 +16,31 @@ func GetAnswerByID(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, answer)
 	}
-   }
+}
 
-//GetAnswersByQuestionID ... Get answers when on Question page
 func GetAnswerByQuestionID(c *gin.Context) {
-	id := c.Params.ByName("id")
-	var answer []Models.Answer
-	err := Models.GetAnswerByQuestionID(&answer, id)
-	if err != nil {
-	 c.AbortWithStatus(http.StatusNotFound)
+ 	id := c.Params.ByName("id")
+ 	var answer []Models.Answer
+ 	err := Models.GetAnswerByQuestionID(&answer, id)
+ 	if err != nil {
+ 	c.AbortWithStatus(http.StatusNotFound)
 	} else {
 	 c.JSON(http.StatusOK, answer)
 	}
-   }
-
-//CreateAnswer - for creating new questions
-func CreateAnswer(c *gin.Context) {
- var answer Models.Answer
- c.BindJSON(&answer)
- err := Models.CreateAnswer(&answer)
- if err != nil {
-  fmt.Println(err.Error())
-  c.AbortWithStatus(http.StatusNotFound)
- } else {
-  c.JSON(http.StatusOK, answer)
- }
 }
 
-//UpdateAnswer ... Update the user information - for profile editing
+func CreateAnswer(c *gin.Context) {
+	var answer Models.Answer
+ 	c.BindJSON(&answer)
+ 	err := Models.CreateAnswer(&answer)
+ 	if err != nil {
+ 	 fmt.Println(err.Error())
+  	 c.AbortWithStatus(http.StatusNotFound)
+ 	} else {
+  	 c.JSON(http.StatusOK, answer)
+ 	}
+}
+
 func UpdateAnswer(c *gin.Context) {
 	var answer Models.Answer
 	id := c.Params.ByName("id")
@@ -59,9 +55,8 @@ func UpdateAnswer(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, answer)
 	}
-   }
+}
 
-   //DeleteAnswer ... Delete the answer on specific question
 func DeleteAnswer(c *gin.Context) {
 	var answer Models.Answer
 	id := c.Params.ByName("id")
@@ -71,14 +66,14 @@ func DeleteAnswer(c *gin.Context) {
 	} else {
 	 c.JSON(http.StatusOK, gin.H{"id" + id: "is deleted"})
 	}
-   }
+}
 
-   func GetUsersWithMostAnswers(c *gin.Context) {
-	var answer []Models.Answer
-	err := Models.GetUsersWithMostAnswers(&answer)
+func GetUsersWithMostAnswers(c *gin.Context) {
+	var user []Models.User
+	err := Models.GetUsersWithMostAnswers(&user)
 	if err != nil {
 	 c.AbortWithStatus(http.StatusNotFound)
 	} else {
-	 c.JSON(http.StatusOK, answer)
+	 c.JSON(http.StatusOK, user)
 	}
-   }
+}

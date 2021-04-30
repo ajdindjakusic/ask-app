@@ -1,13 +1,15 @@
 package main
 
 import (
- "go/first-api/Config"
- "go/first-api/Models"
- "go/first-api/Routes"
- "fmt"
-"github.com/jinzhu/gorm"
+    "go/first-api/Config"
+    "go/first-api/Models"
+    "go/first-api/Routes"
+    "fmt"
+    "github.com/jinzhu/gorm"
 )
+
 var err error
+
 func main() {
  Config.DB, err = gorm.Open("mysql", Config.DbURL())
 if err != nil {
